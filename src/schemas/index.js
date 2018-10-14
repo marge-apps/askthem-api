@@ -36,9 +36,11 @@ module.exports = `
 
 	type Query {
 		survey(id: String): Survey
-		updateSurvey(id: String): Survey
 		cancelSurvey(id: String): Survey
 		surveys(query: String, dateFrom: String, dateTo: String): [Survey]
 		issueJwt(querystring: String): Jwt
+	}
+	type Mutation {
+		updateSurvey(id: String): Survey
 	}
 `;
