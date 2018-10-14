@@ -1,0 +1,7 @@
+{
+	"alias": "ask-them-api",
+	"type": "npm",
+	"github": {
+		"enabled": true
+	}
+}
