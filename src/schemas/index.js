@@ -1,11 +1,11 @@
 module.exports = `
+	scalar JSON
+
 	enum Status {
 		pending
 		completed
 		cancelled
 	}
-
-	scalar JSON
 
 	type Survey {
 		id: String
@@ -39,6 +39,7 @@ module.exports = `
 	}
 
 	type Query {
+		createSurvey(shop: String): Survey
 		survey(id: String): Survey
 		cancelSurvey(id: String): Survey
 		surveys(query: String, dateFrom: String, dateTo: String): SurveyArray
