@@ -11,6 +11,7 @@ module.exports = `
 		id: String
 		shop: String
 		customer: Customer
+		createdAt: String
 		status: Status
 		order: JSON
 		review: Review
@@ -31,7 +32,7 @@ module.exports = `
 	type Review {
 		satisfied: Boolean
 		comment: String
-		reviewedOn: String
+		createdAt: String
 	}
 	type SurveyArray {
 		total: Int
@@ -39,6 +40,15 @@ module.exports = `
 	}
 
 	type Query {
+		surveys(
+			query: String
+			dateTo: String
+			dateFrom: String
+			orderDateFrom: String
+			orderDateTo: String
+			status: Status
+		): [Surveys]
+
 		createSurvey(shop: String): Survey
 		survey(id: String): Survey
 		cancelSurvey(id: String): Survey
