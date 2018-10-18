@@ -33,7 +33,7 @@ module.exports = `
 		comment: String
 		reviewedOn: String
 	}
-	type Surveys {
+	type SurveyArray {
 		total: Int
 		surveys: [Survey]
 	}
@@ -41,7 +41,7 @@ module.exports = `
 	type Query {
 		survey(id: String): Survey
 		cancelSurvey(id: String): Survey
-		surveys(query: String, dateFrom: String, dateTo: String): Surveys
+		surveys(query: String, dateFrom: String, dateTo: String): SurveyArray
 		issueJwt(querystring: String): Jwt
 	}
 	type Mutation {
