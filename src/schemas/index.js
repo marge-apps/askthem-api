@@ -33,11 +33,15 @@ module.exports = `
 		comment: String
 		reviewedOn: String
 	}
+	type Surveys {
+		total: Int
+		surveys: [Survey]
+	}
 
 	type Query {
 		survey(id: String): Survey
 		cancelSurvey(id: String): Survey
-		surveys(query: String, dateFrom: String, dateTo: String): [Survey]
+		surveys(query: String, dateFrom: String, dateTo: String): Surveys
 		issueJwt(querystring: String): Jwt
 	}
 	type Mutation {
