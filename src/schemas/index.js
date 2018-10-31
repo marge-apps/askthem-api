@@ -7,6 +7,19 @@ module.exports = `
 		cancelled
 	}
 
+	type Perfomance {
+		positiveReviews: Int
+		negativeReviews: Int
+		reviewedAt: String
+	}
+
+	type Statistics {
+		positiveReviews: Int
+		negativeReviews: Int
+		perfomance: [Perfomance]
+	}
+
+
 	type Survey {
 		id: String
 		shop: String
@@ -21,6 +34,12 @@ module.exports = `
 		token: String
 	}
 
+	input InputCustomer {
+		fullName: String
+		firstName: String
+		lastName: String
+		email: String
+	}
 	type Customer {
 		id: String
 		fullName: String
@@ -29,6 +48,11 @@ module.exports = `
 		email: String
 	}
 
+	input InputReview {
+		satisfied: Boolean
+		comment: String
+		createdAt: String
+	}
 	type Review {
 		satisfied: Boolean
 		comment: String
@@ -40,22 +64,30 @@ module.exports = `
 	}
 
 	type Query {
-		surveys(
+		getSurveys(
 			query: String
 			dateTo: String
 			dateFrom: String
+			skip: Int
+			limit: Int
 			orderDateFrom: String
 			orderDateTo: String
 			status: Status
-		): [Surveys]
+		): SurveyArray
 
-		createSurvey(shop: String): Survey
-		survey(id: String): Survey
+		getSurvey(id: String): Survey
 		cancelSurvey(id: String): Survey
-		surveys(query: String, dateFrom: String, dateTo: String): SurveyArray
 		issueJwt(querystring: String): Jwt
+
+		getStatistics (dateFrom: String): Statistics
 	}
 	type Mutation {
+		createSurvey(
+			shop: String
+			order: JSON
+			customer: InputCustomer
+			review: InputReview
+		): Survey
 		updateSurvey(id: String): Survey
 	}
 `;

@@ -1,7 +1,11 @@
 {
 	"alias": "ask-them-api",
 	"type": "npm",
+	"public": true,
 	"github": {
 		"enabled": true
+	},
+	"env": {
+		"MONGODB_URI": "@surveys-mongodb-uri"
 	}
 }

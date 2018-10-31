@@ -5,6 +5,13 @@ const resolvers = require('../resolvers');
 
 const db = monk(process.env.MONGODB_URI);
 const collection = db.get('surveys');
+collection.createIndex({
+	'customer.email': 'text',
+	'customer.firstName': 'text',
+	'customer.lastName': 'text',
+	'review.comment': 'text',
+	shop: 'text'
+});
 
 const typeDefs = gql`
 	${schemas}

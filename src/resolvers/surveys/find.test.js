@@ -1,18 +1,14 @@
+const {has} = require('ramda');
 const {
 	cleanUselessParams,
-	find,
 	withDateFrom,
 	withDateTo,
+	withOrderDateFrom,
+	withOrderDateTo,
 	withStatus
 } = require('./find');
 
-describe('Resolvers: Surveys -> find', () => {
-	test('Find not throw', () => {
-		const actual = find(null, {id: ''}, {surveys: {find: () => jest.fn()}});
-
-		expect(actual).not.toThrow();
-	});
-
+describe('Resolvers: Surveys -> find -> survey dates', () => {
 	test('withDateFrom appends dateFrom', () => {
 		const actual = withDateFrom({dateFrom: '2018-11-30'});
 
@@ -36,12 +32,28 @@ describe('Resolvers: Surveys -> find', () => {
 
 		expect(actual).not.toHaveProperty('createdAt.$lte');
 	});
+});
+
+describe('Resolvers: Surveys -> find -> survey dates', () => {
+	test('withOrderDateFrom appends orderDateFrom', () => {
+		const actual = withOrderDateFrom({orderDateFrom: '2018-11-30'});
+
+		expect(has('order.created_at', actual)).toBeTruthy();
+	});
+
+	test('withOrderDateTo appends orderDateTo', () => {
+		const actual = withOrderDateTo({orderDateTo: '2018-11-30'});
+
+		expect(has('order.updated_at', actual)).toBeTruthy();
+	});
 
 	test('withStatus appends status', () => {
 		const actual = withStatus({status: 'pending'});
 
 		expect(actual).toHaveProperty('status', 'pending');
 	});
+});
+describe('Resolvers: Surveys -> find -> Ending step', () => {
 	test('Clean UselessParams', () => {
 		const actual = cleanUselessParams({
 			dateTo: '',

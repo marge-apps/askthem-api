@@ -1,6 +1,6 @@
 const cancel = require('./cancel');
 const create = require('./create');
-const find = require('./find');
+const {find} = require('./find');
 const findOne = require('./find-one');
 const update = require('./update');
 

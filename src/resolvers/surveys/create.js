@@ -5,3 +5,7 @@ module.exports = (_, args, {surveys, dbclient}) =>
 		status: args.pending || 'pending',
 		createdAt: new Date()
 	});
+
+// Module.exports = (_, args, {surveys, dbclient}) => {
+// 	throw new Error('Not implemented')
+// }
