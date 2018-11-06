@@ -6,7 +6,7 @@
   "scripts": {
     "start": "micro",
     "dev": "micro-dev",
-    "lint": "xo --prettier",
+    "lint": "xo",
     "test": "jest"
   },
   "dependencies": {
@@ -32,11 +32,12 @@
   },
   "lint-staged": {
     "*.js": [
-      "xo --fix --prettier",
+      "xo --fix",
       "git add"
     ]
   },
   "xo": {
+    "prettier": true,
     "envs": [
       "jest",
       "node"
