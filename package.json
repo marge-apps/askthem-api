@@ -6,7 +6,7 @@
   "scripts": {
     "start": "micro",
     "dev": "micro-dev",
-    "lint": "xo --prettier",
+    "lint": "xo",
     "test": "jest"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "microrouter": "^3.1.3",
     "monk": "^6.0.6",
     "node-hmac-validator": "marge-apps/node-hmac-validator",
+    "p-all": "^1.0.0",
     "query-string": "^6.2.0",
     "ramda": "^0.25.0"
   },
@@ -41,11 +42,12 @@
   },
   "lint-staged": {
     "*.js": [
-      "xo --fix --prettier",
+      "xo --fix",
       "git add"
     ]
   },
   "xo": {
+    "prettier": true,
     "envs": [
       "jest",
       "node"
