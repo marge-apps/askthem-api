@@ -30,6 +30,7 @@ const createSurvey = () => {
 	return {
 		shop: 'dev-shop.myshopify.com',
 		status,
+		createdAt,
 		order: {
 			...realOrder,
 			id: orderId,

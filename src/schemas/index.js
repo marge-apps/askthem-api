@@ -21,9 +21,8 @@ module.exports = `
 
 
 	type Survey {
-		id: String
+		_id: String
 		shop: String
-		customer: Customer
 		createdAt: String
 		status: Status
 		order: JSON
